@@ -1,9 +1,9 @@
 import passport from 'passport'
-import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt'
-
 import dotenv from 'dotenv'
 
-import User from '../models/user'
+import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt'
+
+import { User } from '../models'
 
 if (process.env.NODE_ENV !== 'production') dotenv.config()
 if (process.env.JWT_SECRET == null) throw new Error('JWT_SECRET is not defined.')

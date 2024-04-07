@@ -1,6 +1,6 @@
 import { type Request, type Response, type NextFunction } from 'express'
 
-import Palette from '../models/palette'
+import { Palette } from '../models'
 
 class PaletteController {
   getPalettes (req: Request, res: Response, next: NextFunction): void {

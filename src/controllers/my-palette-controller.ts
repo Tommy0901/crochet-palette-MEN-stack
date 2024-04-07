@@ -1,9 +1,6 @@
 import { type Request, type Response, type NextFunction } from 'express'
 
-import User from '../models/user'
-import Palette from '../models/palette'
-import MyPalette from '../models/my-palette'
-import BrandPalette from '../models/brand-palette'
+import { User, Palette, MyPalette, BrandPalette } from '../models'
 
 import { errorMsg } from '../helpers/message-helper'
 import { idCheck } from '../helpers/validation-helper'

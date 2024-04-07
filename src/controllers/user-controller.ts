@@ -2,10 +2,10 @@ import { type Request, type Response, type NextFunction } from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
+import { User } from '../models'
+
 import { errorMsg } from '../helpers/message-helper'
 import { allNotNullOrEmpty } from '../helpers/validation-helper'
-
-import User from '../models/user'
 
 interface RequestBody {
   name: string
@@ -41,8 +41,7 @@ class UserController {
         const user = await User.create({
           name,
           email,
-          password: await bcrypt.hash(password, 10),
-          checkpassword
+          password: await bcrypt.hash(password, 10)
         })
         const { password: removedPassword, ...data } = user.toJSON()
         res.json(data)

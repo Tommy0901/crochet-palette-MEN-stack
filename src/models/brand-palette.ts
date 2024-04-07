@@ -1,5 +1,6 @@
 import { model, Schema } from 'mongoose'
-import Palette from './palette'
+
+import { Palette } from './'
 
 const brandPaletteSchema = new Schema({
   name: {

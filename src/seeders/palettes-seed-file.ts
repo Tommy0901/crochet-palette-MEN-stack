@@ -1,4 +1,4 @@
-import Palette from '../models/palette'
+import { Palette } from '../models'
 import palettes from './intial/palettes.json'
 
 export async function initializePalettes (): Promise<void> {

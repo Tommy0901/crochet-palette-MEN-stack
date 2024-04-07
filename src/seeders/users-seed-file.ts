@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs'
 
-import User from '../models/user'
+import { User } from '../models'
 import users from './intial/users.json'
 
 interface UserData {
