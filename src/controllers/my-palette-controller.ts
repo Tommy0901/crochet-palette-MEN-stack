@@ -1,4 +1,5 @@
 import { type Request, type Response, type NextFunction } from 'express'
+import { type Types } from 'mongoose'
 
 import { User, Palette, MyPalette, BrandPalette } from '../models'
 
@@ -7,7 +8,7 @@ import { idCheck } from '../helpers/validation-helper'
 
 class MyPaletteController {
   addMyPalette (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
-    const userId = (req.user as { _id: object })?._id
+    const userId = (req.user as { _id: string | Types.ObjectId })?._id
 
     const { brandId }: { brandId: string } = req.body
 
@@ -55,7 +56,7 @@ class MyPaletteController {
   }
 
   getMyPalettes (req: Request, res: Response, next: NextFunction): void {
-    const userId = (req.user as { _id: object })?._id
+    const userId = (req.user as { _id: string | Types.ObjectId })?._id
 
     const paths = [
       {
@@ -98,7 +99,7 @@ class MyPaletteController {
     const { id: _id } = req.params
     const { name } = req.body
 
-    const userId = (req.user as { _id: object })?._id
+    const userId = (req.user as { _id: string | Types.ObjectId })?._id
 
     if (name === '') return errorMsg(res, 400, 'Please enter the customized name of brand.')
     if (idCheck(_id)) return errorMsg(res, 400, 'Please using valid id of my palette.')
@@ -144,7 +145,7 @@ class MyPaletteController {
   deleteMyPalette (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
     const { id: _id } = req.params
 
-    const userId = (req.user as { _id: object })?._id
+    const userId = (req.user as { _id: string | Types.ObjectId })?._id
 
     if (idCheck(_id)) return errorMsg(res, 400, 'Please using valid id of my palette.')
 

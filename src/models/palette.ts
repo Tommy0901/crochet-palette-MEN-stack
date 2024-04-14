@@ -1,10 +1,12 @@
 import { model, Schema } from 'mongoose'
 
+import { User } from './'
+
 const paletteSchema = new Schema({
   paletteId: {
     type: Number,
     unique: true,
-    required: true
+    sparse: true
   },
   paletteName: {
     type: String,
@@ -13,6 +15,10 @@ const paletteSchema = new Schema({
   hexCode: {
     type: String,
     required: true
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: User
   }
 })
 

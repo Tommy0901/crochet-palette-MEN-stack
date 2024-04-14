@@ -1,10 +1,12 @@
 import { type Request, type Response, type NextFunction } from 'express'
 
 import { Palette } from '../models'
+import { idCheck } from '../helpers/validation-helper'
+import { errorMsg } from '../helpers/message-helper'
 
 class PaletteController {
   getPalettes (req: Request, res: Response, next: NextFunction): void {
-    const { paletteId, paletteName, hexCode } = req.query
+    const { paletteId, paletteName, hexCode, userId } = req.query
 
     // 創建一個空的查詢條件對象
     const queryOptions: Record<string, any> = {}
@@ -22,6 +24,11 @@ class PaletteController {
     // 如果 hexCode 存在，則將它作為條件之一
     if (hexCode != null && hexCode !== '') {
       queryOptions.hexCode = hexCode
+    }
+
+    if (userId != null && userId !== '') {
+      if (idCheck(String(userId))) { errorMsg(res, 400, 'Please using valid user id.'); return }
+      queryOptions.userId = userId
     }
 
     void (async () => {
