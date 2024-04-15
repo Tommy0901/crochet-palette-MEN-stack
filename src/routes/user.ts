@@ -1,5 +1,6 @@
 import UserController from '../controllers/user-controller'
 import FavoriteBrandController from '../controllers/favorite-brand-controller'
+import MyCollectionController from '../controllers/my-collection-controller'
 
 import { authenticated } from '../middlewares/auth-handler'
 
@@ -7,6 +8,7 @@ import Route from './route'
 
 class UserRoute extends Route {
   private readonly userController = new UserController()
+  private readonly myCollectionController = new MyCollectionController()
   private readonly favoriteBrandController = new FavoriteBrandController()
 
   constructor () {
@@ -20,6 +22,18 @@ class UserRoute extends Route {
     )
     this.router.post('/signin',
       this.userController.signIn.bind(this.userController)
+    )
+    this.router.post('/user/collections', authenticated,
+      this.myCollectionController.addMyCollection.bind(this.myCollectionController)
+    )
+    this.router.get('/user/collections', authenticated,
+      this.myCollectionController.showMyCollections.bind(this.myCollectionController)
+    )
+    this.router.put('/user/collection/:id', authenticated,
+      this.myCollectionController.updateMyCollection.bind(this.myCollectionController)
+    )
+    this.router.delete('/user/collection/:id', authenticated,
+      this.myCollectionController.removeMyCollection.bind(this.myCollectionController)
     )
     this.router.post('/user/brands', authenticated,
       this.favoriteBrandController.addMyFavorite.bind(this.favoriteBrandController)
