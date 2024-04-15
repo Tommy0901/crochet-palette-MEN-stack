@@ -8,7 +8,7 @@ const myCollectionSchema = new Schema({
     ref: User,
     required: true
   },
-  collection: {
+  colorSchema: {
     type: [String],
     required: true
   }

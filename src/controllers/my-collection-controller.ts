@@ -9,13 +9,13 @@ import { idCheck } from '../helpers/validation-helper'
 class MyCollectionController {
   addMyCollection (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
     const { _id: userId } = req.user as { _id: string | Types.ObjectId }
-    const { collection }: { collection: string[] } = req.body
-    if (collection == null) return errorMsg(res, 400, 'Please input the array of hexcodes.')
-    if (!collection.every(i => /^#[0-9A-Fa-f]{6}$/.test(i))) return errorMsg(res, 400, 'The hexCode format is invalid.')
+    const { colorSchema }: { colorSchema: string[] } = req.body
+    if (colorSchema == null) return errorMsg(res, 400, 'Please input the array of hexcodes.')
+    if (!colorSchema.every(i => /^#[0-9A-Fa-f]{6}$/.test(i))) return errorMsg(res, 400, 'The hexCode format is invalid.')
 
     void (async () => {
       try {
-        res.json(await MyCollection.create({ userId, collection }))
+        res.json(await MyCollection.create({ userId, colorSchema }))
       } catch (err) {
         next(err)
       }
@@ -37,9 +37,9 @@ class MyCollectionController {
   updateMyCollection (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
     const { id: _id } = req.params
     const { _id: userId } = req.user as { _id: string | Types.ObjectId }
-    const { collection }: { collection: string[] } = req.body
-    if (collection == null) return errorMsg(res, 400, 'Please input the array of hexcodes.')
-    if (!collection.every(i => /^#[0-9A-Fa-f]{6}$/.test(i))) return errorMsg(res, 400, 'The hexCode format is invalid.')
+    const { colorSchema }: { colorSchema: string[] } = req.body
+    if (colorSchema == null) return errorMsg(res, 400, 'Please input the array of hexcodes.')
+    if (!colorSchema.every(i => /^#[0-9A-Fa-f]{6}$/.test(i))) return errorMsg(res, 400, 'The hexCode format is invalid.')
     if (idCheck(_id)) return errorMsg(res, 400, 'Please use the valid id of user collection.')
 
     const options = {
@@ -49,7 +49,7 @@ class MyCollectionController {
 
     void (async () => {
       try {
-        res.json(await MyCollection.findOneAndUpdate({ _id, userId }, { collection }, options).select('-__v'))
+        res.json(await MyCollection.findOneAndUpdate({ _id, userId }, { colorSchema }, options).select('-__v'))
       } catch (err) {
         next(err)
       }
