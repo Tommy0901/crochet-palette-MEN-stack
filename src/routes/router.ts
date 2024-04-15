@@ -1,12 +1,10 @@
 import type Route from './route'
-import BrandPaletteRoute from './brand-palette'
-import MyPaletteRoute from './my-palette'
-import PaletteRoute from './palette'
 import UserRoute from './user'
+import PaletteRoute from './palette'
+import BrandPaletteRoute from './brand-palette'
 
 export const router: Route[] = [
-  new BrandPaletteRoute(),
-  new MyPaletteRoute(),
+  new UserRoute(),
   new PaletteRoute(),
-  new UserRoute()
+  new BrandPaletteRoute()
 ]

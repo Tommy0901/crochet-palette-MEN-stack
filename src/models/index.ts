@@ -1,11 +1,11 @@
 import User from './user'
 import Palette from './palette'
 import BrandPalette from './brand-palette'
-import MyPalette from './my-palette'
+import FavoriteBrand from './favorite-brand'
 
 export {
   User,
   Palette,
   BrandPalette,
-  MyPalette
+  FavoriteBrand
 }

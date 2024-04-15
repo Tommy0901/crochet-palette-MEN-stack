@@ -15,4 +15,4 @@ const brandPaletteSchema = new Schema({
   }]
 })
 
-export default model('BrandPalette', brandPaletteSchema)
+export default model('brand_palette', brandPaletteSchema)

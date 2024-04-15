@@ -1,8 +1,8 @@
 import { model, Schema } from 'mongoose'
 
-import { User, BrandPalette } from './'
+import { User, BrandPalette } from '.'
 
-const myPaletteSchema = new Schema({
+const favoriteBrandSchema = new Schema({
   name: {
     type: String,
     default: null
@@ -19,4 +19,4 @@ const myPaletteSchema = new Schema({
   }
 })
 
-export default model('MyPalette', myPaletteSchema)
+export default model('favorite_brands', favoriteBrandSchema)
