@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "93465a59-4573-41c2-9836-74ed69f9f71c",
+		"name": "後台",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31233959"
+	},
+	"item": [
+		{
+			"name": "Brand Palettes",
+			"item": [
+				{
+					"name": "/brands",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test\",\r\n    \"paletteIds\": [1, 2, 3] // 請以陣列出輸入 paletteId 的值\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/brands",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/brands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/brands",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"brands"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "",
+									"description": "對關鍵字進行模糊搜尋",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/brand/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test\",\r\n    \"paletteIds\": [3] // 請以陣列出輸入 paletteId\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/brand/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"brand",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "brandId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/brand/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test\",\r\n    \"paletteId\": [3] // 請以陣列出輸入 paletteId\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/brand/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"brand",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "brandId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/palettes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/palettes",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"palettes"
+					],
+					"query": [
+						{
+							"key": "paletteId",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "paletteName",
+							"value": "",
+							"description": "對關鍵字進行模糊搜尋",
+							"disabled": true
+						},
+						{
+							"key": "hexCode",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "userId",
+							"value": "",
+							"description": "查詢由使用者創建的 palette",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

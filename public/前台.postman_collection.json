@@ -1,0 +1,578 @@
+{
+	"info": {
+		"_postman_id": "7d2e3cf7-5b59-461c-9e74-952e9bf81775",
+		"name": "前台",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31233959"
+	},
+	"item": [
+		{
+			"name": "My Brands",
+			"item": [
+				{
+					"name": "/user/brands",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"brandId\":\"6618b5563738790cab7fb656\" // 請輸入 brandId\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/brands",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/brands",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/brands",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/brand/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test\" // 幫收藏的品牌自定義一個名稱(optional)\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/brand/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"brand",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "favoriteBrandId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/brand/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/brand/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"brand",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "favoriteBrandId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "My Palettes",
+			"item": [
+				{
+					"name": "/user/palettes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paletteName\":\"test\",\r\n    \"hexCode\":\"#AABBCC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/palettes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"palettes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/palettes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/palettes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"palettes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/palette/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paletteName\":\"updateTest\",\r\n    \"hexCode\":\"#123abc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/palette/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"palette",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "paletteId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/palette/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/palette/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"palette",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "paletteId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "My Collections",
+			"item": [
+				{
+					"name": "/user/collections",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"colorSchema\":[\"#AABBCC\",\"#AABBCC\",\"#AABBCC\",\"#AABBCC\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/collections",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"collections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/collections",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/collections",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"collections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/collection/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MGZkNDBhNzgxY2Q0ZmUxNjQ3ZTliNyIsIm5hbWUiOiJUb21teSIsImVtYWlsIjoiYWs3MTAxODBAZ21haWwuY29tIiwiaWF0IjoxNzEzMTkyNzE4LCJleHAiOjE3MTU3ODQ3MTh9.YSx7qUQl8hEOj78mLxS5yTbz5Zz8DlNT5qpq6QGU5K4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"colorSchema\":[\"#123ABC\",\"#AABBCC\",\"#123ABC\",\"#AABBCC\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/collection/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"collection",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "collectionId"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/user/collection/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/collection/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"collection",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "collectionId"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"name\":\"test\",\r\n    \"email\":\"test@test.com\",\r\n    \"password\":\"123\",\r\n    \"checkpassword\":\"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/signup",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"email\":\"shika4days@gmail.com\",\r\n    \"password\":\"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/signin",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
