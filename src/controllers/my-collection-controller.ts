@@ -3,14 +3,14 @@ import { type Types } from 'mongoose'
 
 import { MyCollection } from '../models'
 
-import { errorMsg } from '../helpers/message-helper'
+import { type ErrorResponse, errorMsg } from '../helpers/message-helper'
 import { idCheck } from '../helpers/validation-helper'
 
 class MyCollectionController {
-  addMyCollection (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  addMyCollection (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { _id: userId } = req.user as { _id: string | Types.ObjectId }
     const { colorSchema }: { colorSchema: string[] } = req.body
-    if (colorSchema == null) return errorMsg(res, 400, 'Please input the array of hexcodes.')
+    if (colorSchema == null || !(colorSchema instanceof Array)) return errorMsg(res, 400, 'Please input the array of hexcodes.')
     if (!colorSchema.every(i => /^#[0-9A-Fa-f]{6}$/.test(i))) return errorMsg(res, 400, 'The hexCode format is invalid.')
 
     void (async () => {
@@ -34,7 +34,7 @@ class MyCollectionController {
     })()
   }
 
-  updateMyCollection (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  updateMyCollection (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { id: _id } = req.params
     const { _id: userId } = req.user as { _id: string | Types.ObjectId }
     const { colorSchema }: { colorSchema: string[] } = req.body
@@ -56,7 +56,7 @@ class MyCollectionController {
     })()
   }
 
-  removeMyCollection (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  removeMyCollection (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { id: _id } = req.params
     const { _id: userId } = req.user as { _id: string | Types.ObjectId }
 

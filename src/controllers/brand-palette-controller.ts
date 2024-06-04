@@ -2,11 +2,11 @@ import { type Request, type Response, type NextFunction } from 'express'
 
 import { Palette, BrandPalette } from '../models'
 
-import { errorMsg } from '../helpers/message-helper'
+import { type ErrorResponse, errorMsg } from '../helpers/message-helper'
 import { idCheck } from '../helpers/validation-helper'
 
 class BrandPaletteController {
-  postBrand (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  postBrand (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { name, paletteIds: $in } = req.body
 
     if (name == null) return errorMsg(res, 400, "Please enter the name of palette's brand.")
@@ -58,7 +58,7 @@ class BrandPaletteController {
     })()
   }
 
-  putBrand (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  putBrand (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { id: _id } = req.params
     const { name, paletteIds: $in } = req.body
 
@@ -91,7 +91,7 @@ class BrandPaletteController {
     })()
   }
 
-  deleteBrand (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  deleteBrand (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { id: _id } = req.params
 
     if (idCheck(_id)) return errorMsg(res, 400, "Please using valid brand's id.")

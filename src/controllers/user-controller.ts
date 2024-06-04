@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 
 import { User, Palette } from '../models'
 
-import { errorMsg } from '../helpers/message-helper'
+import { type ErrorResponse, errorMsg } from '../helpers/message-helper'
 import { allNotNullOrEmpty, idCheck } from '../helpers/validation-helper'
 
 interface RequestBody {
@@ -16,7 +16,7 @@ interface RequestBody {
 }
 
 class UserController {
-  signUp (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  signUp (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { name, email, password, checkpassword } = req.body as RequestBody
 
     if (allNotNullOrEmpty(name, email, password)) {
@@ -52,7 +52,7 @@ class UserController {
     })()
   }
 
-  signIn (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  signIn (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { email, password } = req.body as RequestBody
 
     if (allNotNullOrEmpty(email, password)) {
@@ -83,7 +83,7 @@ class UserController {
     })()
   }
 
-  userCreatePalette (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  userCreatePalette (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { _id: userId } = req.user as { _id: string | Types.ObjectId }
     const { paletteName, hexCode }: { paletteName: string, hexCode: string } = req.body
 
@@ -115,7 +115,7 @@ class UserController {
     })()
   }
 
-  userUpdatePalette (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  userUpdatePalette (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { _id: userId } = req.user as { _id: string | Types.ObjectId }
     const { paletteName, hexCode }: { paletteName: string, hexCode: string } = req.body
     const { id: _id } = req.params
@@ -147,7 +147,7 @@ class UserController {
     })()
   }
 
-  userDeletePalette (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  userDeletePalette (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { _id: userId } = req.user as { _id: string | Types.ObjectId }
     const { id: _id } = req.params
 

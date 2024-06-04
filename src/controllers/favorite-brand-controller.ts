@@ -3,11 +3,11 @@ import { type Types } from 'mongoose'
 
 import { User, Palette, FavoriteBrand, BrandPalette } from '../models'
 
-import { errorMsg } from '../helpers/message-helper'
+import { type ErrorResponse, errorMsg } from '../helpers/message-helper'
 import { idCheck } from '../helpers/validation-helper'
 
 class FavoriteBrandController {
-  addMyFavorite (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  addMyFavorite (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const userId = (req.user as { _id: string | Types.ObjectId })?._id
 
     const { brandId }: { brandId: string } = req.body
@@ -39,7 +39,6 @@ class FavoriteBrandController {
           BrandPalette.findById(brandId), FavoriteBrand.findOne({ name: undefined, userId, brandId })
         ])
         if (currentBrand == null) return errorMsg(res, 400, "Brand doesn't existed.")
-        console.log(favoriteBrand)
         if (favoriteBrand != null) return errorMsg(res, 400, 'This brand is already in your favorites list.')
 
         const { _id: id } = await FavoriteBrand.create({ userId, brandId })
@@ -94,7 +93,7 @@ class FavoriteBrandController {
     })()
   }
 
-  updateMyFavorite (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  updateMyFavorite (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { id: _id } = req.params
     const { name } = req.body
 
@@ -141,7 +140,7 @@ class FavoriteBrandController {
     })()
   }
 
-  removeMyFavorite (req: Request, res: Response, next: NextFunction): Record<string, any> | undefined {
+  removeMyFavorite (req: Request, res: Response, next: NextFunction): Response<ErrorResponse> | undefined {
     const { id: _id } = req.params
 
     const userId = (req.user as { _id: string | Types.ObjectId })?._id
